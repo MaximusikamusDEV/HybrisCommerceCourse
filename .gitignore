@@ -11,6 +11,8 @@
 /bin/custom/**/web/webroot/WEB-INF/lib/
 /bin/custom/**/gensrc/**
 !/bin/custom/**/testsrc/**
+!/bin/custom/**/web/webroot/WEB-INF/_ui-src/responsive/themes/
+!/bin/custom/**/web/webroot/_ui/responsive/
 
 **/.externalToolBuilders
 **/.idea

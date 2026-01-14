@@ -59,7 +59,6 @@
     <extension name='backoffice' />
     <extension name='platformbackoffice' />
     <extension name='ybackoffice' />
-    <extension name='yacceleratorcockpits' />
     <extension name='yaddon' />
     <extension name='basecommerce' />
     <extension name='basecommercebackoffice' />
@@ -190,7 +189,6 @@
     <extension name='warehousingbackoffice' />
     <extension name='warehousingfacades' />
     <extension name='warehousingwebservices' />
-    <extension name='yacceleratorordermanagement' />
     <extension name='personalizationcms' />
     <extension name='personalizationcmsbackoffice' />
     <extension name='personalizationcmsweb' />

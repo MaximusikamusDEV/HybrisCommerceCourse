@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!--
+ Copyright (c) 2019 SAP SE or an SAP affiliate company. All rights reserved.
+-->
+<!--
+	ATTENTION: This is just an example file. You have to edit it according to your needs.
+-->
+
+<items 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+			xsi:noNamespaceSchemaLocation="items.xsd">
+
+	<relations>
+		<relation code="Product2Question" localized="false" autocreate="true" generate="true">
+			<sourceElement qualifier="product" type="Product" cardinality="one">
+				<modifiers read="true" write="true" optional="false" search="true"/>
+			</sourceElement>
+			<targetElement qualifier="questions" type="Question" cardinality="many" collectiontype="set">
+				<modifiers read="true" write="true" search="true" optional="true"/>
+			</targetElement>
+ 		</relation>
+	</relations>
+
+	<itemtypes>
+	<itemtype code="Question" generate="true" autocreate="true">
+		<deployment table="Question" typecode="10102"/>
+		<attributes>
+			<attribute qualifier="code" type="java.lang.String">
+				<modifiers read="true" write="true" unique="true" optional="false" initial="true" search="true"/>
+				<persistence type="property"/>
+			</attribute>
+			<attribute qualifier="question" type="java.lang.String">
+				<modifiers read="true" write="true" optional="false" initial="true"/>
+				<persistence type="property"/>
+			</attribute>
+			<attribute qualifier="questionCustomer" type="Customer">
+				<modifiers read="true" write="true" optional="false" initial="true" search="true"/>
+				<persistence type="property"/>
+			</attribute>
+			<attribute qualifier="answer" type="java.lang.String">
+				<modifiers read="true" write="true" optional="true"/>
+				<persistence type="property"/>
+			</attribute>
+			<attribute qualifier="answerCustomer" type="Customer">
+				<modifiers read="true" write="true" optional="true" search="true"/>
+				<persistence type="property"/>
+			</attribute>
+		</attributes>
+	</itemtype>
+	</itemtypes>
+</items>

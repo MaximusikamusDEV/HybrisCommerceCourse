@@ -4,6 +4,10 @@
     <extension name='trainingcore' />
     <extension name='trainingfacades' />
     <extension name='trainingstorefront' />
+    <extension name='trainingbackoffice' />
+    <extension name='traininginitialdata' />
+    <extension name='trainingfulfilmentprocess' />
+    <extension name='trainingtest' />
     <extension name='adaptivesearch' />
     <extension name='adaptivesearchbackoffice' />
     <extension name='adaptivesearchfacades' />

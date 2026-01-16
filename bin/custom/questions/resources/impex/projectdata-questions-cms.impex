@@ -1,0 +1,8 @@
+$contentCatalog = electronicsContentCatalog
+$contentCV = catalogVersion(CatalogVersion.catalog(Catalog.id[default = $contentCatalog]), CatalogVersion.version[default = Staged])[default = $contentCatalog:Staged]
+
+INSERT_UPDATE ProductQuestionsComponent[import_export]; $contentCV[unique = true]; uid[unique = true]      ; name               ; numberOfQuestionsToShow; fontSize
+                                                      ;                          ; QuestionsOnPdpComponent ; "Questions on PDP" ; 3                      ; 14
+
+UPDATE ContentSlot; $contentCV[unique = true]; uid[unique = true]; cmsComponents(uid, $contentCV)[mode = append]
+                  ;                          ; TabsSlot          ; QuestionsOnPdpComponent

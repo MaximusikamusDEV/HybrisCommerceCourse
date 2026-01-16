@@ -18,6 +18,8 @@
       <css>/_ui/addons/profiletagaddon/responsive/common/css/profiletagaddon.css</css>
       <js>/_ui/addons/textfieldconfiguratortemplateaddon/responsive/common/js/textfieldconfiguratortemplateaddon.js</js>
       <css>/_ui/addons/textfieldconfiguratortemplateaddon/responsive/common/css/textfieldconfiguratortemplateaddon.css</css>
+      <js>/_ui/addons/questions/responsive/common/js/questions.js</js>
+      <css>/_ui/addons/questions/responsive/common/css/questions.css</css>
       <js>/_ui/addons/captchaaddon/responsive/common/js/captchaaddon.js</js>
       <js>/_ui/addons/chineseaddressaddon/responsive/common/js/chineseaddressaddon.js</js>
       <js>/_ui/addons/chineseaddressaddon/responsive/common/js/string.patch.js</js>

@@ -36,4 +36,20 @@
 		<property name="extensionName" value="questions" />
 	</bean>
 
+	<bean id="questionPopulator" class="org.training.populators.QuestionPopulator"/>
+
+	<bean id="questionConverter" class="org.training.converters.QuestionConverter">
+		<property name="questionPopulator" ref="questionPopulator"/>
+		<property name="targetClass" value="questions.data.QuestionData"/>
+	</bean>
+
+	<bean id="productQuestionPopulator" class="org.training.populators.ProductQuestionPopulator">
+		<property name="questionConverter" ref="questionConverter"/>
+	</bean>
+
+	<bean depends-on="defaultProductConverter" parent="listMergeDirective">
+		<property name="listPropertyDescriptor" value="populators"/>
+		<property name="add" ref="productQuestionPopulator"/>
+	</bean>
+
 </beans>

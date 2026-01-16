@@ -1,19 +1,10 @@
 $productCatalog = electronicsProductCatalog
 $catalogVersion = catalogversion(catalog(id[default = $productCatalog]), version[default = 'Staged'])[unique = true, default = $productCatalog:Staged]
 
-INSERT_UPDATE Customer; uid[unique = true]; name
-                      ; CUS001            ; Maxim
-                      ; CUS002            ; Andrei
-                      ; CUS003            ; Viktoryia
-                      ; CUS004            ; John
-
-INSERT_UPDATE Question; code[unique = true]; question                                          ; questionCustomer(uid); answer                                                ; answerCustomer(uid)
-                      ; QUE001             ; "How is battery big inside it"                    ; CUS001               ; "5000 MaH"                                            ; CUS004
-                      ; QUE002             ; "How many cameras does it have"                   ; CUS002               ; "At least 5 but we se only 1"                         ; CUS004
-                      ; QUE003             ; "How much does it cost with sale?"                ; CUS002               ; "More than without"                                   ; CUS004
-                      ; QUE004             ; "Is it good or it would be better to buy Xiaomi?" ; CUS003               ; "It's not my bussines, but it's better to buy Xiaomi" ; CUS001
-
-INSERT_UPDATE Product; code[unique = true]; $catalogVersion; questions(code)
-                     ; 553637         ;                ; QUE001,QUE002,QUE003,QUE004
+INSERT_UPDATE Question; code[unique = true]; question                                          ; questionCustomer(uid); answer                                                ; answerCustomer(uid)       ; product(code, $catalogVersion)[unique = true]
+                      ; QUE001             ; "How is battery big inside it"                    ; testuser3@test.com   ; "5000 MaH"                                            ; promotionuser@test.com    ; 553637
+                      ; QUE002             ; "How many cameras does it have"                   ; testuser2@test.com   ; "At least 5 but we se only 1"                         ; orderhistoryuser@test.com ; 553637
+                      ; QUE003             ; "How much does it cost with sale?"                ; testuser1@test.com   ; "More than without"                                   ; zohan@customer.com        ; 553637
+                      ; QUE004             ; "Is it good or it would be better to buy Xiaomi?" ; testuser1@test.com   ; "It's not my bussines, but it's better to buy Xiaomi" ; womenvipgold@hybris.com   ; 553637
 
 #Product name is NV10

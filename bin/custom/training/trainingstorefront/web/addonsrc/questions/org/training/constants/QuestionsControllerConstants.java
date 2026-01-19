@@ -5,19 +5,11 @@ package org.training.constants;
 
 public interface QuestionsControllerConstants
 {
-	String ADDON_PREFIX = "addon:/questions";
-
 	interface Actions {
 		interface Cms {
 			String _Prefix = "/view/";
 			String _Suffix = "Controller";
-			String ProductQuestionsComponent = _Prefix + "ProductQuestionsComponent" + _Suffix;
-		}
-	}
-
-	interface Views {
-		interface Cms {
-			String ComponentPrefix = "cms/";
+			String QuestionsCMSComponent = _Prefix + "QuestionsCMSComponent" + _Suffix;
 		}
 	}
 }

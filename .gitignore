@@ -41,3 +41,5 @@
 
 
 build/config/developer.properties
+
+bin/custom/**/trainingstorefront/web/node_modules/

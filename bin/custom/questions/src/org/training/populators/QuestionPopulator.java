@@ -24,6 +24,8 @@ public class QuestionPopulator implements Populator<QuestionModel, QuestionData>
                                     questionModel.getAnswerCustomer().getName())
                             .orElse("")
             );
+        } else {
+            questionData.setAnswerCustomer("");
         }
     }
 }

@@ -1,5 +1,5 @@
 $productCatalog = electronicsProductCatalog
-$catalogVersion = catalogversion(catalog(id[default = $productCatalog]), version[default = 'Staged'])[unique = true, default = $productCatalog:Staged]
+$catalogVersion = catalogversion(catalog(id[default = $productCatalog]), version[default = 'Online'])[unique = true, default = $productCatalog:Online]
 
 INSERT_UPDATE Question; code[unique = true]; question                                          ; questionCustomer(uid); answer                                                ; answerCustomer(uid)       ; product(code, $catalogVersion)[unique = true]
                       ; QUE001             ; "How is battery big inside it"                    ; testuser3@test.com   ; "5000 MaH"                                            ; promotionuser@test.com    ; 553637

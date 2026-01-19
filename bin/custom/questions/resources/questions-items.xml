@@ -62,11 +62,5 @@
 				</attribute>
 			</attributes>
 		</itemtype>
-
-        <itemtype code="ProductQuestionsComponent" extends="QuestionsCMSComponent"
-                  abstract="false"
-                  jaloclass="org.training.jalo.ProductQuestionsComponent">
-            <description>Product questions component for PDP</description>
-        </itemtype>
     </itemtypes>
 </items>

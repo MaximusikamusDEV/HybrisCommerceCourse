@@ -1,8 +1,14 @@
 $contentCatalog = electronicsContentCatalog
-$contentCV = catalogVersion(CatalogVersion.catalog(Catalog.id[default = $contentCatalog]), CatalogVersion.version[default = Staged])[default = $contentCatalog:Staged]
+$contentCV = catalogVersion(CatalogVersion.catalog(Catalog.id[default = $contentCatalog]), CatalogVersion.version[default = Online])[default = $contentCatalog:Online]
 
-INSERT_UPDATE ProductQuestionsComponent[import_export]; $contentCV[unique = true]; uid[unique = true]      ; name               ; numberOfQuestionsToShow; fontSize
-                                                      ;                          ; QuestionsOnPdpComponent ; "Questions on PDP" ; 3                      ; 14
+INSERT_UPDATE QuestionsCMSComponent; $contentCV[unique = true]; uid[unique = true]      ; name               ; numberOfQuestionsToShow; fontSize
+                                   ;                          ; QuestionsOnPdpComponent ; "Questions on PDP" ; 3                      ; 14.0
 
-UPDATE ContentSlot; $contentCV[unique = true]; uid[unique = true]; cmsComponents(uid, $contentCV)[mode = append]
-                  ;                          ; TabsSlot          ; QuestionsOnPdpComponent
+INSERT_UPDATE ContentSlot; $contentCV[unique = true]; uid[unique = true]   ; name                     ; active; cmsComponents(uid, $contentCV)
+                         ;                          ; QuestionsSectionSlot ; "Questions Section Slot" ; true  ; QuestionsOnPdpComponent
+
+INSERT_UPDATE ContentSlotName; name[unique = true]; template(uid, $contentCV)[unique = true]; validComponentTypes(code)
+                             ; QuestionsSection   ; ProductDetailsPageTemplate              ; QuestionsCMSComponent
+
+INSERT_UPDATE ContentSlotForTemplate; $contentCV[unique = true]; uid[unique = true]              ; position[unique = true]; pageTemplate(uid, $contentCV)[unique = true]; contentSlot(uid, $contentCV)[unique = true]; allowOverwrite
+                                    ;                          ; QuestionsSection-ProductDetailsTemplate ; QuestionsSection       ; ProductDetailsPageTemplate                  ; QuestionsSectionSlot                       ; true

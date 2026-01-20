@@ -14,6 +14,10 @@
 		<css>/_ui/responsive/theme-lambda/css/style.css</css>
 	</group>
 	
+	<group name="custom_responsive">
+		<css>/_ui/responsive/theme-custom/css/style.css</css>
+	</group>
+	
 	<group name="all_responsive">
         
 		<!-- jquery -->

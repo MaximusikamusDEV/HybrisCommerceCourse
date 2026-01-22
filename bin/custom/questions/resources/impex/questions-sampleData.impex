@@ -8,3 +8,19 @@ INSERT_UPDATE Question; code[unique = true]; question                           
                       ; QUE004             ; "Is it good or it would be better to buy Xiaomi?" ; testuser1@test.com   ; "It's not my bussines, but it's better to buy Xiaomi" ; womenvipgold@hybris.com   ; 553637
 
 #Product name is NV10
+
+INSERT_UPDATE Question; code[unique = true]; question                                          ; questionCustomer(uid); answer                                                ; answerCustomer(uid)       ; product(code, $catalogVersion)[unique = true]
+                      ; QUE005             ; "How is battery big inside it"                    ; testuser3@test.com   ; "5000 MaH"                                            ; promotionuser@test.com    ; 812888
+                      ; QUE006             ; "How many cameras does it have"                   ; testuser2@test.com   ; "At least 5 but we se only 1"                         ; orderhistoryuser@test.com ; 812888
+                      ; QUE007             ; "How much does it cost with sale?"                ; testuser1@test.com   ; "More than without"                                   ; zohan@customer.com        ; 812888
+                      ; QUE008             ; "Is it good or it would be better to buy Xiaomi?" ; testuser1@test.com   ; "It's not my bussines, but it's better to buy Xiaomi" ; womenvipgold@hybris.com   ; 812888
+
+#Product name is Cyber-shot W80, White
+
+INSERT_UPDATE Question; code[unique = true]; question                                          ; questionCustomer(uid); answer                                                ; answerCustomer(uid)       ; product(code, $catalogVersion)[unique = true]
+                      ; QUE009             ; "How is battery big inside it"                    ; testuser3@test.com   ; "5000 MaH"                                            ; promotionuser@test.com    ; 478828
+                      ; QUE010             ; "How many cameras does it have"                   ; testuser2@test.com   ; "At least 5 but we se only 1"                         ; orderhistoryuser@test.com ; 478828
+                      ; QUE011             ; "How much does it cost with sale?"                ; testuser1@test.com   ; "More than without"                                   ; zohan@customer.com        ; 478828
+                      ; QUE012             ; "Is it good or it would be better to buy Xiaomi?" ; testuser1@test.com   ; "It's not my bussines, but it's better to buy Xiaomi" ; womenvipgold@hybris.com   ; 478828
+
+#10.2 Megapixel D-SLR with Standard Zoom Lens

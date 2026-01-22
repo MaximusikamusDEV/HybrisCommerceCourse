@@ -1,14 +1,16 @@
 $contentCatalog = electronicsContentCatalog
-$contentCV = catalogVersion(CatalogVersion.catalog(Catalog.id[default = $contentCatalog]), CatalogVersion.version[default = Online])[default = $contentCatalog:Online]
+$contentCV = catalogVersion(CatalogVersion.catalog(Catalog.id[default = $contentCatalog]), CatalogVersion.version[default = Staged])[default = $contentCatalog:Staged]
 
-INSERT_UPDATE QuestionsCMSComponent; $contentCV[unique = true]; uid[unique = true]      ; name               ; numberOfQuestionsToShow; fontSize
-                                   ;                          ; QuestionsOnPdpComponent ; "Questions on PDP" ; 3                      ; 14.0
 
-INSERT_UPDATE ContentSlot; $contentCV[unique = true]; uid[unique = true]   ; name                     ; active; cmsComponents(uid, $contentCV)
-                         ;                          ; QuestionsSectionSlot ; "Questions Section Slot" ; true  ; QuestionsOnPdpComponent
 
-INSERT_UPDATE ContentSlotName; name[unique = true]; template(uid, $contentCV)[unique = true]; validComponentTypes(code)
-                             ; QuestionsSection   ; ProductDetailsPageTemplate              ; QuestionsCMSComponent
+INSERT_UPDATE QuestionsCMSComponent; $contentCV[unique = true]; uid[unique = true]    ; name             ; &componentRef
+                                   ;                          ; QuestionsCMSComponent ; Questions on PDP ; QuestionsCMSComponent
 
-INSERT_UPDATE ContentSlotForTemplate; $contentCV[unique = true]; uid[unique = true]              ; position[unique = true]; pageTemplate(uid, $contentCV)[unique = true]; contentSlot(uid, $contentCV)[unique = true]; allowOverwrite
-                                    ;                          ; QuestionsSection-ProductDetailsTemplate ; QuestionsSection       ; ProductDetailsPageTemplate                  ; QuestionsSectionSlot                       ; true
+UPDATE ContentSlot; $contentCV[unique = true]; uid[unique = true]; cmsComponents(&componentRef)[mode=append]
+                  ;                          ; TabsSlot          ; QuestionsCMSComponent
+
+#INSERT_UPDATE ContentSlot; $contentCV[unique = true]; uid[unique = true]         ; name                ; active; cmsComponents(&componentRef)
+#                        ;                          ; questions2PDPComponentSlot ; Questions Component ; true  ; QuestionsCMSComponent
+
+#UPDATE ContentSlotForPage; $contentCV[unique = true]; uid[unique = true]   ; position[unique = true]; page(uid, $contentCV)[unique = true][default = 'productDetails']; contentSlot(uid, $contentCV)[unique = true]
+#                        ;                          ; questionsContentSlot ; 8                      ;                                                                 ; questions2PDPComponentSlot

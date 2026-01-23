@@ -1,4 +1,26 @@
 $solrIndexedType = electronicsProductType
+$searchConfigName = electronicsPageSize
 
-INSERT_UPDATE SolrIndexedProperty; solrIndexedType(identifier)[unique = true]; name[unique = true]; type(code); localized[default = false]; fieldValueProvider
-                                 ; $solrIndexedType                          ; questionCount    ; int       ; false                     ; productQuestionValueResolver                                 ; $solrIndexedType                          ; questionCount    ; int       ; false                     ; productQuestionValueResolver
+INSERT_UPDATE SolrIndexedProperty; solrIndexedType(identifier)[unique = true]; name[unique = true]; type(code); sortableType(code); currency[default = false]; localized[default = false]; fieldValueProvider           ; facet[default = true]; facetType(code); visible; useForAutocomplete[default = false]; useForSpellchecking[default = false]; rangeSet(name)
+                                 ; $solrIndexedType                          ; Questions Amount      ; int       ;                   ; false                    ; false                     ; productQuestionValueResolver ; true                 ; MultiSelectOr  ; true   ;                                    ;                                     ;
+                                 ; $solrIndexedType                          ; Questions Amount Range ; int       ;                   ; false                    ; false                     ; productQuestionValueResolver ; true                 ; MultiSelectOr  ; true   ;                                    ;                                     ; questionsCountRange
+
+INSERT_UPDATE SolrValueRangeSet; name[unique = true] ; qualifier; type; solrValueRanges(&rangeValueRefID)
+                               ; questionsCountRange ;          ; int ; rangeRefQCRANGE1, rangeRefQCRANGE2,  rangeRefQCRANGE3,  rangeRefQCRANGE4,  rangeRefQCRANGE5, rangeRefQCRANGE6
+
+INSERT_UPDATE SolrValueRange; &rangeValueRefID ; solrValueRangeSet(name)[unique = true]; name[unique = true]; from; to
+                            ; rangeRefQCRANGE1 ; questionsCountRange                   ; 0-2                ; 0   ; 2
+                            ; rangeRefQCRANGE2 ; questionsCountRange                   ; 3-4                ; 3   ; 4
+                            ; rangeRefQCRANGE3 ; questionsCountRange                   ; 5-6                ; 5   ; 6
+                            ; rangeRefQCRANGE4 ; questionsCountRange                   ; 7-8                ; 7   ; 8
+                            ; rangeRefQCRANGE5 ; questionsCountRange                   ; 9-10               ; 9   ; 10
+                            ; rangeRefQCRANGE6 ; questionsCountRange                   ; 11-*               ; 11  ;
+
+#Added Questions range, because task was: Let’s add facets to PLP:
+#questionCount: 0, 1, 2, 3, 4, ...
+#Display price range facet
+#But price range facet is already exist
+INSERT_UPDATE SolrSearchQueryProperty; indexedProperty(name, solrIndexedType(identifier))[unique = true]; searchQueryTemplate(name, indexedType(identifier))[unique = true][default = DEFAULT:$solrIndexedType]; facet[default = true]; facetType(code); priority; includeInResponse[default = true]
+                                     ; Questions Amount Range:$solrIndexedType                              ;                                                                                                      ; true                 ; MultiSelectOr  ; 200     ;
+                                     ; Questions Amount:$solrIndexedType                                   ;                                                                                                      ; true                 ; MultiSelectOr  ; 200     ;
+

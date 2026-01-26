@@ -8,9 +8,3 @@ INSERT_UPDATE QuestionsCMSComponent; $contentCV[unique = true]; uid[unique = tru
 
 UPDATE ContentSlot; $contentCV[unique = true]; uid[unique = true]; cmsComponents(&componentRef)[mode=append]
                   ;                          ; TabsSlot          ; QuestionsCMSComponent
-
-#INSERT_UPDATE ContentSlot; $contentCV[unique = true]; uid[unique = true]         ; name                ; active; cmsComponents(&componentRef)
-#                        ;                          ; questions2PDPComponentSlot ; Questions Component ; true  ; QuestionsCMSComponent
-
-#UPDATE ContentSlotForPage; $contentCV[unique = true]; uid[unique = true]   ; position[unique = true]; page(uid, $contentCV)[unique = true][default = 'productDetails']; contentSlot(uid, $contentCV)[unique = true]
-#                        ;                          ; questionsContentSlot ; 8                      ;                                                                 ; questions2PDPComponentSlot

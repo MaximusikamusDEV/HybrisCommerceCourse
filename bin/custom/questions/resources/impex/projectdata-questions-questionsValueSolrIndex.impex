@@ -1,9 +1,9 @@
 $solrIndexedType = electronicsProductType
 $searchConfigName = electronicsPageSize
 
-INSERT_UPDATE SolrIndexedProperty; solrIndexedType(identifier)[unique = true]; name[unique = true]; type(code); sortableType(code); currency[default = false]; localized[default = false]; fieldValueProvider           ; facet[default = true]; facetType(code); visible; useForAutocomplete[default = false]; useForSpellchecking[default = false]; rangeSet(name)
-                                 ; $solrIndexedType                          ; questionCount      ; int       ;                   ; false                    ; false                     ; productQuestionValueResolver ; true                 ; MultiSelectOr  ; true   ;                                    ;                                     ;
-                                 ; $solrIndexedType                          ; questionCountRange ; int       ;                   ; false                    ; false                     ; productQuestionValueResolver ; true                 ; MultiSelectOr  ; true   ;                                    ;                                     ; questionsCountRange
+INSERT_UPDATE SolrIndexedProperty; solrIndexedType(identifier)[unique = true]; name[unique = true]; displayName[lang = en] ; type(code); sortableType(code); currency[default = false]; localized[default = false]; fieldValueProvider           ; facet[default = true]; facetType(code); visible; useForAutocomplete[default = false]; useForSpellchecking[default = false]; rangeSet(name)
+                                 ; $solrIndexedType                          ; questionCount      ; "Question Count"       ; int       ;                   ; false                    ; false                     ; productQuestionValueResolver ; true                 ; MultiSelectOr  ; true   ;                                    ;                                     ;
+                                 ; $solrIndexedType                          ; questionCountRange ; "Question Count Range" ; int       ;                   ; false                    ; false                     ; productQuestionValueResolver ; true                 ; MultiSelectOr  ; true   ;                                    ;                                     ; questionsCountRange
 
 INSERT_UPDATE SolrValueRangeSet; name[unique = true]; qualifier; type; solrValueRanges(&rangeValueRefID)
                                ; questionCountRange ;          ; int ; rangeRefQCRANGE1, rangeRefQCRANGE2,  rangeRefQCRANGE3,  rangeRefQCRANGE4,  rangeRefQCRANGE5, rangeRefQCRANGE6
@@ -28,15 +28,15 @@ INSERT_UPDATE SolrIndexedType; identifier[unique = true]; type(code); variant; s
                              ; $solrIndexedType         ; Product   ; false  ; sortRef1,sortRef2,sortRef3,sortRef4,sortRef5,sortRef6,sortRef7,sortRef8
 
 # Define the available sorts
-INSERT_UPDATE SolrSort; &sortRefID; indexedType(identifier)[unique = true]; code[unique = true]; useBoost
-                      ; sortRef1  ; $solrIndexedType                      ; relevance          ; true
-                      ; sortRef2  ; $solrIndexedType                      ; topRated           ; false
-                      ; sortRef3  ; $solrIndexedType                      ; name-asc           ; false
-                      ; sortRef4  ; $solrIndexedType                      ; name-desc          ; false
-                      ; sortRef5  ; $solrIndexedType                      ; price-asc          ; false
-                      ; sortRef6  ; $solrIndexedType                      ; price-desc         ; false
-                      ; sortRef7  ; $solrIndexedType                      ; questionCount-asc  ; false
-                      ; sortRef8  ; $solrIndexedType                      ; questionCount-desc ; false
+INSERT_UPDATE SolrSort; &sortRefID; indexedType(identifier)[unique = true]; code[unique = true]; useBoost; name[lang = en]
+                      ; sortRef1  ; $solrIndexedType                      ; relevance          ; true    ; "Relevance"
+                      ; sortRef2  ; $solrIndexedType                      ; topRated           ; false   ; "Top Rated"
+                      ; sortRef3  ; $solrIndexedType                      ; name-asc           ; false   ; "Name (ascending)"
+                      ; sortRef4  ; $solrIndexedType                      ; name-desc          ; false   ; "Name (descending)"
+                      ; sortRef5  ; $solrIndexedType                      ; price-asc          ; false   ; "Price (lowest first)"
+                      ; sortRef6  ; $solrIndexedType                      ; price-desc         ; false   ; "Price (highest first)"
+                      ; sortRef7  ; $solrIndexedType                      ; questionCount-asc  ; false   ; "Question Count (lowest first)"
+                      ; sortRef8  ; $solrIndexedType                      ; questionCount-desc ; false   ; "Question Count (highest first)"
 
 # Define the sort fields
 INSERT_UPDATE SolrSortField; sort(indexedType(identifier), code)[unique = true]; fieldName[unique = true]; ascending[unique = true]

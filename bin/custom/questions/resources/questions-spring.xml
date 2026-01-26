@@ -54,4 +54,14 @@
 		<property name="add" ref="productQuestionPopulator" />
 	</bean>
 
+	<bean id="productQuestionValueResolver" class="org.training.search.solrfacetsearch.provider.impl.ProductQuestionValueResolver">
+		<property name="sessionService" ref="defaultSessionService"/>
+		<property name="qualifierProvider" ref="noOpQualifierProvider"/>
+	</bean>
+
+	<alias name="searchResultProductQuestionCountPopulator" alias="commerceSearchResultProductPopulator"/>
+	<bean id="searchResultProductQuestionCountPopulator"
+		  class="org.training.populators.SearchResultProductQuestionCountPopulator"
+		  parent="defaultCommerceSearchResultProductPopulator"/>
 </beans>
+

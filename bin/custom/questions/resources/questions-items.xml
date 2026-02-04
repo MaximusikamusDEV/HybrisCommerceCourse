@@ -21,6 +21,15 @@
     </relations>
 
     <itemtypes>
+        <itemtype code="Product" autocreate="false" generate="false">
+            <attributes>
+                <attribute qualifier="questionCount" type="java.lang.Integer">
+                    <modifiers read="true" write="true" search="true"/>
+                    <persistence type="property"/>
+                </attribute>
+            </attributes>
+        </itemtype>
+
         <itemtype code="Question" generate="true" autocreate="true">
             <deployment table="Question" typecode="10102"/>
             <attributes>

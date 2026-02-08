@@ -9,6 +9,10 @@
 <items xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xsi:noNamespaceSchemaLocation="items.xsd">
 
+    <collectiontypes>
+        <collectiontype code="QuestionList" elementtype="Question" autocreate="true" generate="true" type="list"/>
+    </collectiontypes>
+
     <relations>
         <relation code="Product2Question" localized="false" autocreate="true" generate="true">
             <sourceElement qualifier="product" type="Product" cardinality="one">
@@ -71,5 +75,33 @@
 				</attribute>
 			</attributes>
 		</itemtype>
+        
+        <itemtype code="NewQuestionsEmailProcess" extends="StoreFrontCustomerProcess">
+            <attributes>
+                <attribute qualifier="questionList" type="QuestionList">
+                    <persistence type="property"/>
+                </attribute>
+            </attributes>
+        </itemtype>
+        
+        <itemtype code="NewQuestionsEmailCronJob" extends="CronJob" generate="true" autocreate="true">
+            <attributes>
+                <attribute qualifier="customerEmail" type="java.lang.String">
+                    <persistence type="property"/>
+                </attribute>
+                <attribute qualifier="language" type="Language">
+                    <persistence type="property"/>
+                </attribute>
+                <attribute qualifier="baseSite" type="BaseSite">
+                    <persistence type="property"/>
+                </attribute>
+                <attribute qualifier="baseStore" type="BaseStore">
+                    <persistence type="property"/>
+                </attribute>
+                <attribute qualifier="lastExecutionTime" type="java.util.Date">
+                    <persistence type="property"/>
+                </attribute>
+            </attributes>
+        </itemtype>
     </itemtypes>
 </items>

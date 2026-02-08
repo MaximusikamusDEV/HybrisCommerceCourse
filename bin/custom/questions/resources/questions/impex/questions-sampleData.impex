@@ -14,6 +14,8 @@ INSERT_UPDATE Question; code[unique = true]; question                           
                       ; QUE006             ; "How many cameras does it have"                   ; testuser2@test.com   ; "At least 5 but we se only 1"                         ; orderhistoryuser@test.com ; 812888
                       ; QUE007             ; "How much does it cost with sale?"                ; testuser1@test.com   ; "More than without"                                   ; zohan@customer.com        ; 812888
                       ; QUE008             ; "Is it good or it would be better to buy Xiaomi?" ; testuser1@test.com   ; "It's not my bussines, but it's better to buy Xiaomi" ; womenvipgold@hybris.com   ; 812888
+                      ; QUE050             ; "How much does it cost with sale?"                ; testuser1@test.com   ; "More than without"                                   ; zohan@customer.com        ; 812888
+                      ; QUE051             ; "Is it good or it would be better to buy Xiaomi?" ; testuser1@test.com   ; "It's not my bussines, but it's better to buy Xiaomi" ; womenvipgold@hybris.com   ; 812888
 
 #Product name is Cyber-shot W80, White
 
@@ -26,6 +28,7 @@ INSERT_UPDATE Question; code[unique = true]; question                           
                       ; QUE014             ; "How many cameras does it have"                   ; testuser2@test.com   ; "At least 5 but we se only 1"                         ; orderhistoryuser@test.com ; 478828
                       ; QUE015             ; "How much does it cost with sale?"                ; testuser1@test.com   ; "More than without"                                   ; zohan@customer.com        ; 478828
                       ; QUE016             ; "Is it good or it would be better to buy Xiaomi?" ; testuser1@test.com   ; "It's not my bussines, but it's better to buy Xiaomi" ; womenvipgold@hybris.com   ; 478828
+                      ; QUE049             ; "How much does it cost with sale?"                ; testuser1@test.com   ; "More than without"                                   ; zohan@customer.com        ; 478828
 
 #10.2 Megapixel D-SLR with Standard Zoom Lens
 
@@ -46,5 +49,20 @@ INSERT_UPDATE Question; code[unique = true]; question                           
                       ; QUE030             ; "How many cameras does it have"                   ; testuser2@test.com   ; "At least 5 but we se only 1"                         ; orderhistoryuser@test.com ; 686951
                       ; QUE031             ; "How much does it cost with sale?"                ; testuser1@test.com   ; "More than without"                                   ; zohan@customer.com        ; 686951
                       ; QUE032             ; "Is it good or it would be better to buy Xiaomi?" ; testuser1@test.com   ; "It's not my bussines, but it's better to buy Xiaomi" ; womenvipgold@hybris.com   ; 686951
+                      ; QUE033             ; "How much does it cost with sale?"                ; testuser1@test.com   ; "More than without"                                   ; zohan@customer.com        ; 686951
+                      ; QUE034             ; "Is it good or it would be better to buy Xiaomi?" ; testuser1@test.com   ; "It's not my bussines, but it's better to buy Xiaomi" ; womenvipgold@hybris.com   ; 686951
+                      ; QUE035             ; "How much does it cost with sale?"                ; testuser1@test.com   ; "More than without"                                   ; zohan@customer.com        ; 686951
+                      ; QUE036             ; "Is it good or it would be better to buy Xiaomi?" ; testuser1@test.com   ; "It's not my bussines, but it's better to buy Xiaomi" ; womenvipgold@hybris.com   ; 686951
+                      ; QUE037             ; "How much does it cost with sale?"                ; testuser1@test.com   ; "More than without"                                   ; zohan@customer.com        ; 686951
+                      ; QUE038             ; "Is it good or it would be better to buy Xiaomi?" ; testuser1@test.com   ; "It's not my bussines, but it's better to buy Xiaomi" ; womenvipgold@hybris.com   ; 686951
+                      ; QUE039             ; "How much does it cost with sale?"                ; testuser1@test.com   ; "More than without"                                   ; zohan@customer.com        ; 686951
+                      ; QUE040             ; "Is it good or it would be better to buy Xiaomi?" ; testuser1@test.com   ; "It's not my bussines, but it's better to buy Xiaomi" ; womenvipgold@hybris.com   ; 686951
+                      ; QUE041             ; "How much does it cost with sale?"                ; testuser1@test.com   ; "More than without"                                   ; zohan@customer.com        ; 686951
+                      ; QUE043             ; "How much does it cost with sale?"                ; testuser1@test.com   ; "More than without"                                   ; zohan@customer.com        ; 686951
+                      ; QUE044             ; "Is it good or it would be better to buy Xiaomi?" ; testuser1@test.com   ; "It's not my bussines, but it's better to buy Xiaomi" ; womenvipgold@hybris.com   ; 686951
+                      ; QUE045             ; "How much does it cost with sale?"                ; testuser1@test.com   ; "More than without"                                   ; zohan@customer.com        ; 686951
+                      ; QUE046             ; "Is it good or it would be better to buy Xiaomi?" ; testuser1@test.com   ; "It's not my bussines, but it's better to buy Xiaomi" ; womenvipgold@hybris.com   ; 686951
+                      ; QUE047             ; "How much does it cost with sale?"                ; testuser1@test.com   ; "More than without"                                   ; zohan@customer.com        ; 686951
+                      ; QUE048             ; "Is it good or it would be better to buy Xiaomi?" ; testuser1@test.com   ; "It's not my bussines, but it's better to buy Xiaomi" ; womenvipgold@hybris.com   ; 686951
 
 #Cyber-shot DSC-W55

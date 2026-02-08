@@ -87,7 +87,7 @@ public class DefaultPreviewDataModelUrlResolver implements UrlResolver<PreviewDa
 
 			if (page instanceof EmailPageModel)
 			{
-				return "/emails/" + page.getUid();
+				return "/questions/emails/" + page.getUid();
 			}
 
 			if (page instanceof CategoryPageModel)

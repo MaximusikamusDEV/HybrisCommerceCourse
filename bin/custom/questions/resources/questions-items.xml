@@ -29,7 +29,7 @@
             <attributes>
                 <attribute qualifier="questionCount" type="java.lang.Integer">
                     <modifiers read="true" write="true" search="true"/>
-                    <persistence type="property"/>
+                    <persistence type="dynamic" attributeHandler="productQuestionCountAttributeHandler"/>
                 </attribute>
             </attributes>
         </itemtype>
@@ -55,6 +55,11 @@
                 </attribute>
                 <attribute qualifier="answerCustomer" type="Customer">
                     <modifiers read="true" write="true" optional="true" search="true"/>
+                    <persistence type="property"/>
+                </attribute>
+                <attribute qualifier="approved" type="java.lang.Boolean">
+                    <modifiers read="true" write="true" initial="true" optional="false"/>
+                    <defaultvalue>false</defaultvalue>
                     <persistence type="property"/>
                 </attribute>
             </attributes>

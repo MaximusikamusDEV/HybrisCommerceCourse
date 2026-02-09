@@ -99,4 +99,6 @@
 
     <bean id="questionsSystemSetup" class="org.training.setup.QuestionsCustomSystemSetup"
           parent="abstractCoreSystemSetup"/>
+
+    <bean id="productQuestionCountAttributeHandler" class="org.training.attributehandlers.ProductQuestionCountAttributeHandler"/>
 </beans>

@@ -2,12 +2,96 @@
 <!--
  Copyright (c) 2020 SAP SE or an SAP affiliate company. All rights reserved
 -->
-<config xmlns="http://www.hybris.com/cockpit/config">
+<config xmlns="http://www.hybris.com/cockpit/config"
+        xmlns:editorArea="http://www.hybris.com/cockpitng/component/editorArea"
+        xmlns:list-view="http://www.hybris.com/cockpitng/component/listView"
+        xmlns:advanced-search="http://www.hybris.com/cockpitng/config/advancedsearch"
+        xmlns:df="http://www.hybris.com/cockpitng/component/dynamicForms"
+        xmlns:dsb="http://www.hybris.com/cockpitng/config/dashboard"
+        xmlns:explorer-tree="http://www.hybris.com/cockpitng/config/explorertree"
+        xmlns:grid-view="http://www.hybris.com/cockpitng/component/gridView"
+        xmlns:na="http://www.hybris.com/cockpitng/config/notifications"
+        xmlns:simple-search="http://www.hybris.com/cockpitng/config/simplesearch"
+        xmlns:wz="http://www.hybris.com/cockpitng/config/wizard-config"
+        xmlns:y="http://www.hybris.com/cockpit/config/hybris">
 
-	<!-- questionsBackoffice UI configuration should be provided here -->
+    <context merge-by="type" type="Question" component="editor-area">
+        <editorArea:editorArea>
+            <editorArea:essentials>
+                <editorArea:essentialSection name="hmc.section.essential">
+                    <editorArea:attribute qualifier="product"/>
+                    <editorArea:attribute qualifier="questionCustomer"/>
+                </editorArea:essentialSection>
+            </editorArea:essentials>
 
-	<!--<context component="component-code" module="questionsBackoffice">-->
-		<!--Please check documentation for code snippets for specific components-->
-	<!--</context>-->
+            <editorArea:tab name="hmc.tab.questions.questionsAndAnswers"
+                            position="1">
+                <editorArea:section name="hmc.section.questions.additionalDetails">
+                    <editorArea:attribute qualifier="question"/>
+                    <editorArea:attribute qualifier="answer"/>
+                </editorArea:section>
+            </editorArea:tab>
+        </editorArea:editorArea>
+    </context>
 
+    <context component="explorer-tree" module="trainingbackoffice" merge-by="module">
+        <n:explorer-tree xmlns:n="http://www.hybris.com/cockpitng/config/explorertree">
+            <n:navigation-node id="Questions Addon">
+                <n:navigation-node id="Questions">
+                    <n:type-node code="Question" id="Question"/>
+                </n:navigation-node>
+            </n:navigation-node>
+        </n:explorer-tree>
+    </context>
+
+    <context type="Question" component="listview" merge-by="type">
+        <list-view:list-view>
+            <list-view:column qualifier="product"/>
+            <list-view:column qualifier="questionCustomer"/>
+            <list-view:column qualifier="answerCustomer"/>
+        </list-view:list-view>
+    </context>
+
+    <context type="Question" component="create-wizard">
+        <wz:flow id="questionWizard" title="QuestionWizardCreate">
+            <wz:prepare id="questionPrepare">
+                <wz:initialize property="newQuestion" type="Question"/>
+            </wz:prepare>
+            <wz:step id="mainStep" label="create.question.main.label">
+                <wz:content>
+                    <wz:property-list root="newQuestion">
+                        <wz:property qualifier="code"/>
+                        <wz:property qualifier="product"/>
+                        <wz:property qualifier="questionCustomer"/>
+                        <wz:property qualifier="question"/>
+                        <wz:property qualifier="answerCustomer"/>
+                        <wz:property qualifier="answer"/>
+                    </wz:property-list>
+                </wz:content>
+
+                <wz:navigation id="step1.navigation">
+                    <wz:cancel/>
+                    <wz:done visible="!#empty(newQuestion.code) and newQuestion.question != null and newQuestion.questionCustomer != null">
+                        <wz:save property="newQuestion"/>
+                    </wz:done>
+                </wz:navigation>
+            </wz:step>
+        </wz:flow>
+    </context>
+
+    <context type="Question" component="advanced-search"
+             merge-by="type">
+        <advanced-search:advanced-search>
+            <advanced-search:field-list>
+                <advanced-search:field name="product" operator="equals" selected="true"/>
+                <advanced-search:field name="questionCustomer" operator="equals" selected="true"/>
+            </advanced-search:field-list>
+        </advanced-search:advanced-search>
+    </context>
+
+    <context type="Question" component="simple-search" merge-by="type">
+        <simple-search:simple-search>
+            <simple-search:field name="code"/>
+        </simple-search:simple-search>
+    </context>
 </config>

@@ -14,9 +14,7 @@ public class ProductQuestionValueResolver extends AbstractValueResolver<ProductM
     protected Integer loadData(IndexerBatchContext batchContext,
                                Collection<IndexedProperty> indexedProperties,
                                ProductModel model){
-        return Optional.ofNullable(model.getQuestions())
-                .map(Collection::size)
-                .orElse(0);
+        return Optional.ofNullable(model.getQuestionCount()).orElse(0);
     }
 
     @Override

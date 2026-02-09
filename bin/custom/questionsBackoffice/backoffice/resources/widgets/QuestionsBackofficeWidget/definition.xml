@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<!--
+ Copyright (c) 2020 SAP SE or an SAP affiliate company. All rights reserved
+-->
+<widget-definition xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:noNamespaceSchemaLocation="http://www.hybris.com/schema/cockpitng/widget-definition.xsd"
+	id="org.training.widgets.questionsBackofficewidget">
+	<name>questionsBackoffice Sample Widget</name>
+	<description>questionsBackoffice Sample Widget</description>
+	<defaultTitle>questionsBackoffice Sample Widget</defaultTitle>
+	<author>Extgen</author>
+	<version>1.0</version>
+	<view src="questionsBackofficewidget.zul" />
+	<keywords>
+		<keyword>questionsBackoffice</keyword>
+	</keywords>
+	<controller class="org.training.widgets.QuestionsBackofficeController" />
+</widget-definition>

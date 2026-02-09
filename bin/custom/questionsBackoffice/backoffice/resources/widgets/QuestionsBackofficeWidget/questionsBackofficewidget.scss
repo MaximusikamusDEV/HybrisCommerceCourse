@@ -1,0 +1,13 @@
+@charset "utf-8";
+@import "./support/questionsBackofficewidget-variables.scss";
+
+.yw-labelstyle
+{
+	color: $questionsBackoffice-label-text-color;
+}
+
+.questionsBackoffice-container {
+	background: $questionsBackoffice-container-background;
+	font-family: $questionsBackoffice-container-font-family;
+	font-size: $questionsBackoffice-container-font-size;
+}

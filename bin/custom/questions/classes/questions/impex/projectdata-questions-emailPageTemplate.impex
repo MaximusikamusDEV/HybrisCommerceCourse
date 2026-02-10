@@ -1,0 +1,22 @@
+$contentCatalog = electronicsContentCatalog
+$contentCV = catalogVersion(CatalogVersion.catalog(Catalog.id[default = $contentCatalog]), CatalogVersion.version[default = Staged])[default = $contentCatalog:Staged]
+$wideContent = CMSImageComponent, BannerComponent
+
+$emailPackageName = org.training.email.context
+$emailResource = jar:org.training.setup.QuestionsCustomSystemSetup&/questions/emails
+
+$lang = en
+
+INSERT_UPDATE RendererTemplate; code[unique = true]        ; contextClass; rendererType(code)[default = 'velocity']
+                              ; email-newquestions-body    ; $emailPackageName.NewQuestionsEmailContext ;
+                              ; email-newquestions-subject ; $emailPackageName.NewQuestionsEmailContext ;
+
+UPDATE RendererTemplate; code[unique = true]        ; description[lang = $lang]     ; templateScript[lang = $lang, translator = de.hybris.platform.commerceservices.impex.impl.FileLoaderValueTranslator]
+                       ; email-newquestions-body    ; "New Questions Email Body"    ; $emailResource/email-newQuestionsBody.vm
+                       ; email-newquestions-subject ; "New Questions Email Subject" ; $emailResource/email-newQuestionsSubject.vm
+
+INSERT_UPDATE EmailPageTemplate; $contentCV[unique = true]; uid[unique = true]        ; name                         ; active; frontendTemplateName; subject(code)              ; htmlTemplate(code)      ; restrictedPageTypes(code)
+                               ;                          ; NewQuestionsEmailTemplate ; New Questions Email Template ; true  ; newQuestionsEmail   ; email-newquestions-subject ; email-newquestions-body ; EmailPage
+
+INSERT_UPDATE EmailPage; $contentCV[unique = true]; uid[unique = true]; name                ; masterTemplate(uid, $contentCV); defaultPage; approvalStatus(code)[default = 'approved']; fromEmail[lang = $lang]     ; fromName[lang = $lang]
+                       ;                          ; newQuestionsEmail ; New Questions Email ; NewQuestionsEmailTemplate      ; true       ;                                           ; maximmotevich2004@gmail.com ; Test Mail

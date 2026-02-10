@@ -48,6 +48,7 @@ public class ProductQuestionPopulatorTest {
         questionData.setAnswerCustomer("nameA");
 
         when(productModel.getQuestions()).thenReturn(questionModels);
+        when(questionModel.getApproved()).thenReturn(Boolean.TRUE);
         when(questionConverter.convertAll(questionModels)).thenReturn(Collections.singletonList(questionData));
 
         populator.populate(productModel, productData);

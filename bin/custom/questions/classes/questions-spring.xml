@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+ Copyright (c) 2019 SAP SE or an SAP affiliate company. All rights reserved.
+-->
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+           http://www.springframework.org/schema/beans/spring-beans.xsd
+           http://www.springframework.org/schema/aop
+           http://www.springframework.org/schema/aop/spring-aop.xsd
+           http://www.springframework.org/schema/context
+           http://www.springframework.org/schema/context/spring-context.xsd">
+
+    <context:annotation-config/>
+
+    <bean id="questionsCoreDataImportedEventListener" parent="abstractCoreDataImportedEventListener">
+        <property name="supportedChannels">
+            <list value-type="de.hybris.platform.commerceservices.enums.SiteChannel">
+                <value>B2C</value>
+                <!--
+                                <value>B2B</value>
+                -->
+            </list>
+        </property>
+        <property name="addonExtensionMetadata">
+            <bean class="de.hybris.platform.addonsupport.data.AddonExtensionMetadata">
+                <property name="suffixChannel" value="false"/>
+                <property name="baseExtensionName" value="questions"/>
+            </bean>
+        </property>
+    </bean>
+
+    <bean id="questionsSampleDataEventListener" parent="abstractGenericAddOnSampleDataEventListener">
+        <property name="extensionName" value="questions"/>
+    </bean>
+
+    <bean id="questionPopulator" class="org.training.populators.QuestionPopulator"/>
+
+    <bean id="questionConverter" class="org.training.converters.QuestionConverter">
+        <property name="questionPopulator" ref="questionPopulator"/>
+        <property name="targetClass" value="questions.data.QuestionData"/>
+    </bean>
+
+    <bean id="productQuestionPopulator" class="org.training.populators.ProductQuestionPopulator">
+        <property name="questionConverter" ref="questionConverter"/>
+    </bean>
+
+    <bean parent="configurablePopulatorModification">
+        <property name="target" ref="defaultProductConfiguredPopulator"/>
+        <property name="keyType" value="de.hybris.platform.commercefacades.product.ProductOption"/>
+        <property name="key" value="QUESTIONS"/>
+        <property name="add" ref="productQuestionPopulator"/>
+    </bean>
+
+    <bean id="productQuestionValueResolver"
+          class="org.training.search.solrfacetsearch.provider.impl.ProductQuestionValueResolver">
+        <property name="sessionService" ref="defaultSessionService"/>
+        <property name="qualifierProvider" ref="noOpQualifierProvider"/>
+    </bean>
+
+    <alias name="searchResultProductQuestionCountPopulator" alias="commerceSearchResultProductPopulator"/>
+    <bean id="searchResultProductQuestionCountPopulator"
+          class="org.training.populators.SearchResultProductQuestionCountPopulator"
+          parent="defaultCommerceSearchResultProductPopulator"/>
+
+    <bean id="generateNewQuestionsEmail" parent="abstractGenerateEmailAction">
+        <property name="frontendTemplateName" value="NewQuestionsEmailTemplate"/>
+    </bean>
+
+    <bean id="newQuestionsEmailProcessDefinitionResource"
+          class="de.hybris.platform.processengine.definition.ProcessDefinitionResource">
+        <property name="resource" value="classpath:/questions/processes/newQuestionsEmailProcess.xml"/>
+    </bean>
+
+    <bean id="newQuestionsEmailContext"
+          class="org.training.email.context.NewQuestionsEmailContext"
+          parent="abstractEmailContext"
+          scope="prototype">
+    </bean>
+
+    <bean id="questionsDao" class="org.training.daos.impl.QuestionDaoImpl">
+        <property name="flexibleSearchService" ref="flexibleSearchService"/>
+    </bean>
+
+    <bean id="questionService" class="org.training.services.impl.QuestionServiceImpl">
+        <property name="questionDao" ref="questionsDao"/>
+    </bean>
+
+    <bean id="sendNewQuestionsEmailJob" class="org.training.jobs.SendNewQuestionsEmailJob">
+        <property name="questionService" ref="questionService"/>
+        <property name="businessProcessService" ref="businessProcessService"/>
+        <property name="flexibleSearchService" ref="defaultFlexibleSearchService"/>
+        <property name="modelService" ref="defaultModelService"/>
+        <property name="sessionService" ref="defaultSessionService"/>
+        <property name="userService" ref="defaultUserService"/>
+    </bean>
+
+    <bean id="questionsSystemSetup" class="org.training.setup.QuestionsCustomSystemSetup"
+          parent="abstractCoreSystemSetup"/>
+
+    <bean id="productQuestionCountAttributeHandler" class="org.training.attributehandlers.ProductQuestionCountAttributeHandler"/>
+</beans>

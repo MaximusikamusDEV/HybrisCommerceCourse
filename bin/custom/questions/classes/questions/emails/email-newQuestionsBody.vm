@@ -1,0 +1,35 @@
+﻿<html>
+<head>
+</head>
+<body bgcolor="#ffffff">
+<h1>New questions summary</h1>
+<p>There are new questions after last email:</p>
+
+    #if($ctx.questionsByProduct.isEmpty())
+    <p>No new questions!</p>
+    #end
+
+    #foreach($entry in $ctx.questionsByProduct.entrySet())
+    <h2>
+        Product: $entry.key.code || $entry.key.name
+    </h2>
+
+    <table border="1">
+        <tr>
+            <th>Question code</th>
+            <th>Question</th>
+            <th>Answer</th>
+        </tr>
+        #foreach($question in $entry.value)
+            <tr>
+                <td>${question.code}</td>
+                <td>${question.question}</td>
+                <td>${question.answer}</td>
+            </tr>
+        #end
+    </table>
+
+    #end
+
+</body>
+</html>

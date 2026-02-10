@@ -1,0 +1,3 @@
+INSERT_UPDATE Customer; uid[unique = true]          ; name                ; sessionLanguage(isocode); groups(uid)
+                      ; testmailforcommerce@mail.ru ; Testm Mail Receiver ; en                      ; customergroup
+                      ; maximmot@gmail.com          ; Test mail Sender    ; en                      ; customergroup

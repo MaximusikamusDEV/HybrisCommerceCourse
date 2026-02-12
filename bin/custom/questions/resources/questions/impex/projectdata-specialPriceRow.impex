@@ -1,0 +1,20 @@
+$productCatalog = electronicsProductCatalog
+$catalogVersion = catalogVersion(catalog(id[default = $productCatalog]), version[default = 'Online'])[unique = true, default = '$productCatalog:Online']
+$prices = europe1Prices[translator = de.hybris.platform.europe1.jalo.impex.Europe1PricesTranslator]
+
+
+INSERT_UPDATE PriceRow; productId; unit(code)[default = pieces]; currency(isocode); price; minqtd[unique = true]; unitFactor; net
+                      ; 2053266  ; pieces                      ; USD              ; 1300 ; 3                    ; 1         ; false
+                      ; 2053266  ; pieces                      ; USD              ; 1000 ; 6                    ; 1         ; false
+                      ; 2053266  ; pieces                      ; USD              ; 900  ; 9                    ; 1         ; false
+
+#Different way how you can add prices per amount
+INSERT_UPDATE Product; code[unique = true]; $catalogVersion; $prices                                                          ; unit(code[default = pieces])
+                    ; 2053266            ;                ; 1 pieces = 1391,34 USD, 2 pieces = 1200 USD, 5 pieces = 1000 USD ; pieces
+
+#If you need to delete any row for minqtd
+#REMOVE PriceRow; product(code, $catalogVersion)[unique = true]; minqtd[unique = true]
+#              ; 2053266                                      ; 2
+
+
+#2053266  is <<EOS 500D body>>

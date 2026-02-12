@@ -1,0 +1,9 @@
+INSERT_UPDATE NewQuestionsEmailCronJob; code[unique = true]      ; job(code)                ; customerEmail               ; sessionLanguage(isocode); baseSite(uid); baseStore(uid)
+                                      ; newQuestionsEmailCronJob ; sendNewQuestionsEmailJob ; testmailforcommerce@mail.ru ; en                      ; electronics  ; electronics
+
+INSERT_UPDATE ServicelayerJob; code[unique = true]      ; springId
+                             ; sendNewQuestionsEmailJob ; sendNewQuestionsEmailJob
+
+#Every day at midnight
+INSERT_UPDATE Trigger; cronJob(code)[unique = true]; cronExpression
+                     ; newQuestionsEmailCronJob    ; 0 0 0 * * ?

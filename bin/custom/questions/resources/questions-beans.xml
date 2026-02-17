@@ -23,5 +23,6 @@
 
 	<enum class="de.hybris.platform.commercefacades.product.ProductOption">
 		<value>QUESTIONS</value>
+		<value>WARRANTY</value>
 	</enum>
 </beans>

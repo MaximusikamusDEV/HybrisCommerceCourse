@@ -28,7 +28,7 @@ public class WarrantyCMSComponentController extends AbstractCMSAddOnComponentCon
         if (productData != null) {
             productData.setWarrantyYears(
                     productFacade.getProductForCodeAndOptions(
-                            productData.getCode(), List.of(ProductOption.QUESTIONS)
+                            productData.getCode(), List.of(ProductOption.WARRANTY)
                     ).getWarrantyYears()
             );
 

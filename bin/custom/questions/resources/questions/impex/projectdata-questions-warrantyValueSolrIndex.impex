@@ -1,0 +1,8 @@
+$solrIndexedType = electronicsProductType
+$searchConfigName = electronicsPageSize
+
+INSERT_UPDATE SolrSearchQueryProperty; indexedProperty(name, solrIndexedType(identifier))[unique = true]; searchQueryTemplate(name, indexedType(identifier))[unique = true][default = DEFAULT:$solrIndexedType]; facet[default = true]; facetType(code); priority; includeInResponse[default = true]
+                                     ; warrantyYears:$solrIndexedType                                   ;                                                                                                      ; true                 ; MultiSelectOr  ; 210     ;
+
+INSERT_UPDATE SolrIndexedProperty; solrIndexedType(identifier)[unique = true]; name[unique = true]; displayName[lang = en]; type(code); sortableType(code); currency[default = false]; localized[default = false]; fieldValueProvider           ; facet[default = true]; facetType(code); visible; useForAutocomplete[default = false]; useForSpellchecking[default = false]; rangeSet(name)
+                                 ; $solrIndexedType                          ; warrantyYears      ; "Warranty Years"      ; int       ;                   ; false                    ; false                     ; productWarrantyValueResolver ; true                 ; MultiSelectOr  ; true   ;                                    ;                                     ;

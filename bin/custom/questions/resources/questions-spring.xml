@@ -101,4 +101,12 @@
           parent="abstractCoreSystemSetup"/>
 
     <bean id="productQuestionCountAttributeHandler" class="org.training.attributehandlers.ProductQuestionCountAttributeHandler"/>
+
+    <bean id="productWarrantyYearsPopulator" class="org.training.populators.ProductWarrantyYearsPopulator"/>
+
+    <bean id="productWarrantyValueResolver"
+          class="org.training.search.solrfacetsearch.provider.impl.ProductWarrantyValueResolver">
+        <property name="sessionService" ref="defaultSessionService"/>
+        <property name="qualifierProvider" ref="noOpQualifierProvider"/>
+    </bean>
 </beans>

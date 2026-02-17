@@ -10,5 +10,8 @@ public class SearchResultProductQuestionCountPopulator extends SearchResultProdu
         super.populate(source, target);
         Integer questionCount = this.<Integer> getValue(source, "questionCount");
         target.setQuestionCount(questionCount);
+
+        Integer warrantyYears = this.<Integer> getValue(source, "warrantyYears");
+        target.setWarrantyYears(warrantyYears);
     }
 }

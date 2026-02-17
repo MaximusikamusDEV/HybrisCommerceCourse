@@ -27,6 +27,10 @@
         <ycommerce:testId code="searchPage_productName_link_${product.code}">
             <a class="product__list--name"
                href="${fn:escapeXml(productUrl)}">${ycommerce:sanitizeHTML(product.name)}</a>
+
+            <div class="product__warranty--panel">
+                Warranty years: ${not empty product.warrantyYears ? product.warrantyYears : "Contact manager"}
+            </div>
         </ycommerce:testId>
 
         <div class="product__list--price-panel">

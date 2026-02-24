@@ -5,8 +5,7 @@ package org.training.constants;
 
 import de.hybris.platform.acceleratorcms.model.components.CMSProductListComponentModel;
 import org.training.model.QuestionsCMSComponentModel;
-
-import java.util.Locale;
+import org.training.model.WarrantyCMSComponentModel;
 
 public interface QuestionsControllerConstants
 {
@@ -18,6 +17,7 @@ public interface QuestionsControllerConstants
 			String _Suffix = "Controller";
 			String QuestionsCMSComponent = _Prefix + QuestionsCMSComponentModel._TYPECODE + _Suffix;
 			String CMSProductListComponent = _Prefix + CMSProductListComponentModel._TYPECODE + _Suffix;
+			String WarrantyCMSComponent = _Prefix + WarrantyCMSComponentModel._TYPECODE + _Suffix;
 		}
 	}
 

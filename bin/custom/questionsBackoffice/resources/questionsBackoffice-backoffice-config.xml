@@ -34,6 +34,17 @@
         </editorArea:editorArea>
     </context>
 
+    <context merge-by="type" type="Product" component="editor-area">
+        <editorArea:editorArea>
+            <editorArea:tab name="hmc.tab.product.properties"
+                            position="1">
+                <editorArea:section name="hmc.section.product.warrantyDetails">
+                    <editorArea:attribute qualifier="warrantyYears"/>
+                </editorArea:section>
+            </editorArea:tab>
+        </editorArea:editorArea>
+    </context>
+
     <context component="explorer-tree" module="trainingbackoffice" merge-by="module">
         <n:explorer-tree xmlns:n="http://www.hybris.com/cockpitng/config/explorertree">
             <n:navigation-node id="Questions Addon">

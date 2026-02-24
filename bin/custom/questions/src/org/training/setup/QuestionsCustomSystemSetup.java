@@ -24,6 +24,9 @@ public class QuestionsCustomSystemSetup extends AbstractSystemSetup {
         importImpexFile(context,"/impex/projectdata-specialPriceRow.impex");
         importImpexFile(context,"/impex/questions-fullIndexJobTrigger.impex");
         importImpexFile(context,"/impex/questions-sampleData.impex");
+        importImpexFile(context,"/impex/projectdata-questions-warrantyYearsSample.impex");
+        importImpexFile(context,"/impex/projectdata-questions-warrantyValueSolrIndex.impex");
+        importImpexFile(context,"/impex/projectdata-questions-warrantyCms.impex");
         return true;
     }
 
